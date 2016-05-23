@@ -24793,25 +24793,32 @@ var React = require('react');
 var ReactRouter = require('react-router');
 var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
+var CreateHistory = require('history/lib/createHashHistory');
+
+var History = new CreateHistory({
+  queryKey: false
+});
 
 var Main = require('./components/Main.jsx');
 var About = require('./components/About.jsx');
 var Info = require('./components/Info.jsx');
+var Contact = require('./components/Contact.jsx');
 
 var Routes = React.createElement(
   Router,
-  null,
+  { history: History },
   React.createElement(
     Route,
     { path: '/', component: Main },
     React.createElement(Route, { path: '/about', component: About }),
-    React.createElement(Route, { path: 'info', component: Info })
+    React.createElement(Route, { path: 'info', component: Info }),
+    React.createElement(Route, { path: 'contact', component: Contact })
   )
 );
 
 module.exports = Routes;
 
-},{"./components/About.jsx":230,"./components/Info.jsx":231,"./components/Main.jsx":232,"react":226,"react-router":81}],230:[function(require,module,exports){
+},{"./components/About.jsx":230,"./components/Contact.jsx":231,"./components/Info.jsx":232,"./components/Main.jsx":233,"history/lib/createHashHistory":38,"react":226,"react-router":81}],230:[function(require,module,exports){
 var React = require('react');
 
 var About = React.createClass({
@@ -24831,6 +24838,28 @@ module.exports = About;
 },{"react":226}],231:[function(require,module,exports){
 var React = require('react');
 
+var Contact = React.createClass({
+  displayName: 'Contact',
+
+  render: function () {
+
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'h2',
+        null,
+        'This is contact page!!!'
+      )
+    );
+  }
+});
+
+module.exports = Contact;
+
+},{"react":226}],232:[function(require,module,exports){
+var React = require('react');
+
 var Info = React.createClass({
   displayName: 'Info',
 
@@ -24845,7 +24874,7 @@ var Info = React.createClass({
 
 module.exports = Info;
 
-},{"react":226}],232:[function(require,module,exports){
+},{"react":226}],233:[function(require,module,exports){
 var React = require('react');
 
 var Main = React.createClass({
@@ -24858,7 +24887,7 @@ var Main = React.createClass({
       React.createElement(
         'h1',
         null,
-        'Welcome Diego!'
+        'Welcome to Diego\'s React Page!'
       ),
       this.props.children,
       React.createElement(
@@ -24872,11 +24901,11 @@ var Main = React.createClass({
 
 module.exports = Main;
 
-},{"react":226}],233:[function(require,module,exports){
+},{"react":226}],234:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Routes = require('./Routes.jsx');
 
 ReactDOM.render(Routes, document.getElementById('main'));
 
-},{"./Routes.jsx":229,"react":226,"react-dom":51}]},{},[233]);
+},{"./Routes.jsx":229,"react":226,"react-dom":51}]},{},[234]);
